@@ -2,7 +2,7 @@
 
 """
 Written by Chris Moultrie <chris@moultrie.org> @tebriel
-Available on Github at git@github.com:tebriel/huluchallenge2014.git
+Available on Github at https://github.com/tebriel/huluchallenge2014
 This was a lot of fun, thanks.
 
 Usage: python hulu.py <filename>
