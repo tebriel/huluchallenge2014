@@ -4,6 +4,8 @@
 Written by Chris Moultrie <chris@moultrie.org> @tebriel
 Available on Github at git@github.com:tebriel/huluchallenge2014.git
 This was a lot of fun, thanks.
+
+Usage: python hulu.py <filename>
 """
 
 from collections import defaultdict
