@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 
-"""Written by Chris Moultrie <chris@moultrie.org>
-Available on Github at 
+"""
+Written by Chris Moultrie <chris@moultrie.org> @tebriel
+Available on Github at git@github.com:tebriel/huluchallenge2014.git
+This was a lot of fun, thanks.
 """
 
 from collections import defaultdict
