@@ -54,28 +54,31 @@ def process_file(file_name):
                 
     return (sources, blacklists, sources_map)
 
-def process_blacklist_items(sources, blacklists, sources_maps):
+def process_blacklist_items(sources, blacklists, sources_map):
     """Figure out which lines have our required blacklist items and print them
     out"""
     for blacklist in blacklists:
         blacklist_sources = blacklist.split(',')
         to_intersect = []
         for source in blacklist_sources:
+            # Verify there's something there because defaultdict will just put
+            # 0 there for us when we try to access something that doesn't exist
             if len(sources_map[source]) > 0:
                 to_intersect.append(set(sources_map[source]))
+        
+        # Build up how many times we see those items
         counts = defaultdict(int)
+        # Just find the indices that they all have in common
         for intersect in set.intersection(*to_intersect):
             for source in sources[intersect].split(','):
                 counts[source] += 1
+        # We don't want to list out the blacklisted items, so kill those off
         for source in blacklist_sources:
             counts.pop(source, None)
+        # Finally, output our results
         output(counts)
 
 
-
-sources, blacklists, sources_map = process_file(argv[1])
-process_blacklist_items(sources, blacklists, sources_map)
-
 if __name__ == "__main__":
-    import doctest
-    doctest.testmod()
+    process_results = process_file(argv[1])
+    process_blacklist_items(*process_results)
