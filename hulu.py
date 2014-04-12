@@ -39,21 +39,21 @@ def process_file(file_name):
     sources_map = defaultdict(list)
     # What index we're currently on
     current_index = 0
-    
+
     with open(file_name) as groups:
         for line in groups:
             line = line.rstrip('\n')
             if line == "####":
                 sources_done = True
                 continue
-            
+
             if sources_done:
                 blacklists.append(line)
             else:
                 sources.append(line)
                 map_sources(line, current_index, sources_map)
                 current_index += 1
-                
+
     return (sources, blacklists, sources_map)
 
 def process_blacklist_items(sources, blacklists, sources_map):
@@ -67,7 +67,7 @@ def process_blacklist_items(sources, blacklists, sources_map):
             # 0 there for us when we try to access something that doesn't exist
             if len(sources_map[source]) > 0:
                 to_intersect.append(set(sources_map[source]))
-        
+
         # Build up how many times we see those items
         counts = defaultdict(int)
         # Just find the indices that they all have in common
